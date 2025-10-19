@@ -11,6 +11,7 @@ namespace CongNghePhanMen.Controllers
         // GET: Blog
         public ActionResult Index()
         {
+            // DucThe thêm vào
             return View();
         }
     }
