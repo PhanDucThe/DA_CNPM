@@ -12,6 +12,7 @@ namespace CongNghePhanMen.Controllers
         public ActionResult Index()
         {
             // DucThe thêm vào
+
             return View();
         }
     }
