@@ -120,22 +120,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Admin\Controllers\OrderManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PostManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PrescriptionManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ReviewManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\VoucherManagementController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CheckoutController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\PrescriptionController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\User\AccountController.cs" />
+    <Compile Include="Controllers\User\BlogController.cs" />
+    <Compile Include="Controllers\User\CartController.cs" />
+    <Compile Include="Controllers\User\CheckoutController.cs" />
+    <Compile Include="Controllers\User\HomeController.cs" />
+    <Compile Include="Controllers\User\OrderController.cs" />
+    <Compile Include="Controllers\User\PrescriptionController.cs" />
+    <Compile Include="Controllers\User\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,15 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Dashboard\" />
-    <Folder Include="Areas\Admin\Views\OrderManagement\" />
-    <Folder Include="Areas\Admin\Views\PostManagement\" />
-    <Folder Include="Areas\Admin\Views\PrescriptionManagement\" />
-    <Folder Include="Areas\Admin\Views\ProductManagement\" />
-    <Folder Include="Areas\Admin\Views\ReviewManagement\" />
-    <Folder Include="Areas\Admin\Views\UserManagement\" />
-    <Folder Include="Areas\Admin\Views\VoucherManagement\" />
+    <Folder Include="Controllers\Amin\" />
     <Folder Include="Models\DataAccess\" />
     <Folder Include="Models\Services\" />
     <Folder Include="Models\ViewModels\" />
