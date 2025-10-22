@@ -180,9 +180,15 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Prescription\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -190,13 +196,6 @@
     <Folder Include="Models\DataAccess\" />
     <Folder Include="Models\Services\" />
     <Folder Include="Models\ViewModels\" />
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Blog\" />
-    <Folder Include="Views\Cart\" />
-    <Folder Include="Views\Checkout\" />
-    <Folder Include="Views\Order\" />
-    <Folder Include="Views\Prescription\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
