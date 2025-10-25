@@ -45,10 +45,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -132,6 +138,86 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
+    <Compile Include="Models\brand.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cart.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cart_items.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\category.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\coupon.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\coupon_conditions.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CSDL.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSDL.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CSDL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CSDL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSDL.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\district.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\order_items.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\post.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\post_categories.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\post_tags.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_images.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\province.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\role.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tag.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_roles.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ward.cs">
+      <DependentUpon>CSDL.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,12 +240,29 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\CSDL.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CSDL.Context.cs</LastGenOutput>
+      <DependentUpon>CSDL.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\CSDL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CSDL.edmx</DependentUpon>
+      <LastGenOutput>CSDL.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\CSDL.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CSDL.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\CSDL.edmx.diagram">
+      <DependentUpon>CSDL.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -190,13 +293,17 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Prescription\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\DataAccess\" />
     <Folder Include="Models\Services\" />
     <Folder Include="Models\ViewModels\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -224,6 +331,9 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
