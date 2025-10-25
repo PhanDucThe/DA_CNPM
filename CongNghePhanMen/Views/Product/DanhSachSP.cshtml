@@ -1,0 +1,43 @@
+﻿@model CongNghePhanMen.Models.DuLieu
+@{
+    ViewBag.Title = "DanhSachSP";
+}
+
+<div class="col-md-9 col-lg-10">
+    <h3 class="mb-3">Danh Sach San Pham</h3>
+
+    <div class="row">
+        @foreach (var item in Model.SanPham)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    @{
+                        string imgUrl = "";
+
+                        if (item.Images != null && item.Images.Any())
+                        {
+                            imgUrl = item.Images.OrderBy(i => i.display_order).First().image_url;
+                        }
+                        else
+                        {
+                            imgUrl = item.thumbnail_url;
+                        }
+
+                        if (string.IsNullOrEmpty(imgUrl))
+                        {
+                            imgUrl = "/images/default-product.png"; // fallback
+                        }
+                    }
+                    <img src="@imgUrl" class="card-img-top" alt="@item.name" style="height:140px; object-fit:cover;" />
+
+                    <div class="card-body text-center">
+                        <h6 class="card-title">@item.name</h6>
+                        <p class="text-danger fw-bold">@item.original_price VNĐ</p>
+                        <p class="text-danger fw-bold">@item.sale_price VNĐ</p>
+                        <a href="@Url.Action("Details", "Product", new { id = item.id})" class="btn btn-sm btn-outline-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
