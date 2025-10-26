@@ -46,15 +46,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -142,6 +144,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+
+    <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
+   
     <Compile Include="Models\DataAccess\brand.cs">
       <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
@@ -216,6 +222,7 @@
     </Compile>
     <Compile Include="Models\DataAccess\ward.cs">
       <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
+
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -240,6 +247,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+
     <Content Include="Models\DataAccess\QL_NHATHUOC.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QL_NHATHUOC.edmx</DependentUpon>
@@ -249,6 +257,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QL_NHATHUOC.edmx</DependentUpon>
       <LastGenOutput>QL_NHATHUOC.cs</LastGenOutput>
+
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -256,12 +265,14 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+
     <EntityDeploy Include="Models\DataAccess\QL_NHATHUOC.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QL_NHATHUOC.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\DataAccess\QL_NHATHUOC.edmx.diagram">
       <DependentUpon>QL_NHATHUOC.edmx</DependentUpon>
+
     </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
@@ -292,6 +303,17 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Prescription\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\DataAccess\" />
+    <Folder Include="Models\Services\" />
+    <Folder Include="Models\ViewModels\" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\OrderManagement\Index.cshtml" />
     <Content Include="Views\OrderManagement\Details.cshtml" />
