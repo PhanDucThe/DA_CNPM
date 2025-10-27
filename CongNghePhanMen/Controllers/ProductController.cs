@@ -1,116 +1,136 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CongNghePhanMen.Models;
-
-
 
 namespace CongNghePhanMen.Controllers
 {
     public class ProductController : Controller
     {
+        private QLNTEntities db = new QLNTEntities();
+
         // GET: Product
         public ActionResult Index()
         {
+            var products = db.products.Include(p => p.brand).Include(p => p.category);
+            return View(products.ToList());
+        }
+
+        // GET: Product/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            product product = db.products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        // GET: Product/Create
+        public ActionResult Create()
+        {
+            ViewBag.brand_id = new SelectList(db.brands, "id", "name");
+            ViewBag.category_id = new SelectList(db.categories, "id", "name");
             return View();
         }
-        public ActionResult Details()
+
+        // POST: Product/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id,name,sku,slug,thumbnail_url,description,content,ingredients,dosage,contraindications,packaging_details,prescription_required,original_price,sale_price,stock_quantity,stock,is_active,category_id,brand_id,created_at,updated_at,created_by,updated_by")] product product)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                db.products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.brand_id = new SelectList(db.brands, "id", "name", product.brand_id);
+            ViewBag.category_id = new SelectList(db.categories, "id", "name", product.category_id);
+            return View(product);
         }
-        public ActionResult DanhSachSP(int? id, string kw)
+
+        // GET: Product/Edit/5
+        public ActionResult Edit(int? id)
         {
-            DuLieu model = new DuLieu();
-            string connStr = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["QLNT"].ConnectionString;
-
-            try
+            if (id == null)
             {
-                using (var conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-
-                    string prodQuery = "SELECT * FROM products WHERE 1=1";
-                    using (var cmd = new SqlCommand())
-                    {
-                        cmd.Connection = conn;
-
-                        if (id.HasValue && id.Value > 0)
-                        {
-                            prodQuery += " AND category_id = @category_id";
-                            cmd.Parameters.AddWithValue("@category_id", id.Value);
-                        }
-
-                        if (!string.IsNullOrEmpty(kw))
-                        {
-                            prodQuery += " AND name LIKE @name";
-                            cmd.Parameters.AddWithValue("@name", "%" + kw + "%");
-                        }
-
-                        cmd.CommandText = prodQuery;
-
-                        // Fill products
-                        var prodAdapter = new SqlDataAdapter(cmd);
-                        var prodTable = new DataTable();
-                        prodAdapter.Fill(prodTable);
-
-                        // Debug: số dòng trả về từ DB
-                        ViewBag.DbRowCount = prodTable.Rows.Count;
-
-                        foreach (DataRow rw in prodTable.Rows)
-                        {
-                            var p = new products
-                            {
-                                id = rw["id"] == DBNull.Value ? 0 : Convert.ToInt32(rw["id"]),
-                                name = rw["name"] == DBNull.Value ? "" : rw["name"].ToString(),
-                                sku = rw["sku"] == DBNull.Value ? "" : rw["sku"].ToString(),
-                                slug = rw["slug"] == DBNull.Value ? "" : rw["slug"].ToString(),
-                                thumbnail_url = rw["thumbnail_url"] == DBNull.Value ? "" : rw["thumbnail_url"].ToString(),
-                                sale_price = rw["sale_price"] == DBNull.Value ? 0m : Convert.ToDecimal(rw["sale_price"]),
-                                original_price = rw["original_price"] == DBNull.Value ? 0m : Convert.ToDecimal(rw["original_price"]),
-                                stock_quantity = rw["stock_quantity"] == DBNull.Value ? 0 : Convert.ToInt32(rw["stock_quantity"]),
-                                category_id = rw["category_id"] == DBNull.Value ? (int?)null : Convert.ToInt32(rw["category_id"])
-                            };
-
-                            // Lấy ảnh cho product p
-                            using (var imgCmd = new SqlCommand("SELECT * FROM product_images WHERE product_id = @pid ORDER BY display_order", conn))
-                            {
-                                imgCmd.Parameters.AddWithValue("@pid", p.id);
-                                var imgAdapter = new SqlDataAdapter(imgCmd);
-                                var imgTable = new DataTable();
-                                imgAdapter.Fill(imgTable);
-
-                                foreach (DataRow ir in imgTable.Rows)
-                                {
-                                    p.Images.Add(new product_images
-                                    {
-                                        id = ir["id"] == DBNull.Value ? 0 : Convert.ToInt32(ir["id"]),
-                                        product_id = ir["product_id"] == DBNull.Value ? 0 : Convert.ToInt32(ir["product_id"]),
-                                        image_url = ir["image_url"] == DBNull.Value ? "" : ir["image_url"].ToString(),
-                                        display_order = ir["display_order"] == DBNull.Value ? 0 : Convert.ToInt32(ir["display_order"])
-                                    });
-                                }
-                            }
-
-                            model.SanPham.Add(p);
-                        }
-                    } 
-                } 
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            catch (Exception ex)
+            product product = db.products.Find(id);
+            if (product == null)
             {
-                // Hiện lỗi tạm thời để debug
-                return Content("Error in DanhSachSP: " + ex.Message + "\n" + ex.ToString());
+                return HttpNotFound();
             }
+            ViewBag.brand_id = new SelectList(db.brands, "id", "name", product.brand_id);
+            ViewBag.category_id = new SelectList(db.categories, "id", "name", product.category_id);
+            return View(product);
+        }
 
-            // Debug cho View: tổng sản phẩm đã đổ vào model
-            ViewBag.ModelCount = model.SanPham.Count;
-            ViewBag.DebugNames = string.Join(", ", model.SanPham.Select(s => s.name));
+        // POST: Product/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id,name,sku,slug,thumbnail_url,description,content,ingredients,dosage,contraindications,packaging_details,prescription_required,original_price,sale_price,stock_quantity,stock,is_active,category_id,brand_id,created_at,updated_at,created_by,updated_by")] product product)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.brand_id = new SelectList(db.brands, "id", "name", product.brand_id);
+            ViewBag.category_id = new SelectList(db.categories, "id", "name", product.category_id);
+            return View(product);
+        }
 
-            return View(model);
+        // GET: Product/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            product product = db.products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        // POST: Product/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            product product = db.products.Find(id);
+            db.products.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
