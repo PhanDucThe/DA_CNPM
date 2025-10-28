@@ -4,9 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", required: false)
+    <style>
+        .text-danger {
+            display: block;
+            min-height: 18px;
+            font-size: 0.9rem;
+        }
+
+        html{
+            box-sizing:border-box;
+        }
+    </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
@@ -20,6 +38,38 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+                    @if (Session["UserId"] == null)
+                    {
+                        <!-- Khi CHƯA đăng nhập -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Login", "Account")">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Register", "Account")">Đăng ký</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- Khi ĐÃ đăng nhập -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Xin chào, @Session["UserName"]
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("Index", "Account")">Tài khoản của tôi</a></li>
+
+                                @if (Session["UserRole"] != null && Session["UserRole"].ToString() == "ADMIN")
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("Index", "Default")">Trang quản trị</a></li>
+                                }
+
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Logout", "Account")">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -34,6 +84,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>

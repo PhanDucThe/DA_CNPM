@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2feaef8d88154a6a884bf93ebf1335dc" Name="Diagram1">
+        <EntityTypeShape EntityType="CSDLBanthuocModel.brand" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.cart_items" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.cart" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.category" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.coupon_conditions" Width="1.5" PointX="11" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.coupon" Width="1.5" PointX="8.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.district" Width="1.5" PointX="11" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.order_items" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.order" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.post_categories" Width="1.5" PointX="0.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.post_tags" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.post" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.product_images" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.product" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.province" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.role" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.sysdiagram" Width="1.5" PointX="10.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.tag" Width="1.5" PointX="3" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.user_roles" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.user" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSDLBanthuocModel.ward" Width="1.5" PointX="13.25" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_products_barand" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.FK_cart_items_carts" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.FK_cart_items_variants" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.FK_carts_users" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_categories_parent" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_products_category" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_coupon_conditions_coupons" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_districts_provinces" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_wards_districts" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_orderItem_order" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_orderItem_product" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_order_user" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_post_categories_parent" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_posts_post_categories" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_post_tags_posts" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_post_tags_tags" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_posts_users" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_product_images_products" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_userRole_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="CSDLBanthuocModel.fk_userRole_users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

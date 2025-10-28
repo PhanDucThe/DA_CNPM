@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -55,9 +60,19 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -66,6 +81,27 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -75,150 +111,108 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="WebGrease">
-      <Private>True</Private>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Admin\Controllers\OrderManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PostManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PrescriptionManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ReviewManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserManagementController.cs" />
-    <Compile Include="Areas\Admin\Controllers\VoucherManagementController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CheckoutController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\PrescriptionController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\Admin\DefaultController.cs" />
+    <Compile Include="Controllers\Admin\OrderManagementController.cs" />
+    <Compile Include="Controllers\Admin\ProductManagementController.cs" />
+    <Compile Include="Controllers\User\AccountController.cs" />
+    <Compile Include="Controllers\User\BlogController.cs" />
+    <Compile Include="Controllers\User\CartController.cs" />
+    <Compile Include="Controllers\User\CheckoutController.cs" />
+    <Compile Include="Controllers\User\HomeController.cs" />
+    <Compile Include="Controllers\User\OrderController.cs" />
+    <Compile Include="Controllers\User\PrescriptionController.cs" />
+    <Compile Include="Controllers\User\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\brand.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
+    <Compile Include="Models\DataAccess\brand.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\cart.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\cart.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\cart_items.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\cart_items.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\category.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\category.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\coupon.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\coupon.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\coupon_conditions.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\coupon_conditions.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\district.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\district.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\order.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\order.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\order_items.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\order_items.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\post.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\post.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\post_categories.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\post_categories.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\post_tags.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\post_tags.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\product.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\product.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\product_images.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\product_images.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\province.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\province.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLNT.Context.cs">
+    <Compile Include="Models\DataAccess\QL_NHATHUOC.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QLNT.Context.tt</DependentUpon>
+      <DependentUpon>QL_NHATHUOC.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLNT.cs">
+    <Compile Include="Models\DataAccess\QL_NHATHUOC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QLNT.tt</DependentUpon>
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QLNT.Designer.cs">
+    <Compile Include="Models\DataAccess\QL_NHATHUOC.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QLNT.edmx</DependentUpon>
+      <DependentUpon>QL_NHATHUOC.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\role.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\role.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tag.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\tag.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\user.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\user.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\user_roles.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\user_roles.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ward.cs">
-      <DependentUpon>QLNT.tt</DependentUpon>
+    <Compile Include="Models\DataAccess\ward.cs">
+      <DependentUpon>QL_NHATHUOC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -239,25 +233,26 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\StyleAdmin.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\QLNT.Context.tt">
+    <Content Include="Models\DataAccess\QL_NHATHUOC.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLNT.edmx</DependentUpon>
-      <LastGenOutput>QLNT.Context.cs</LastGenOutput>
+      <DependentUpon>QL_NHATHUOC.edmx</DependentUpon>
+      <LastGenOutput>QL_NHATHUOC.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\QLNT.tt">
+    <Content Include="Models\DataAccess\QL_NHATHUOC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QLNT.edmx</DependentUpon>
-      <LastGenOutput>QLNT.cs</LastGenOutput>
+      <DependentUpon>QL_NHATHUOC.edmx</DependentUpon>
+      <LastGenOutput>QL_NHATHUOC.cs</LastGenOutput>
     </Content>
-    <EntityDeploy Include="Models\QLNT.edmx">
+    <EntityDeploy Include="Models\DataAccess\QL_NHATHUOC.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLNT.Designer.cs</LastGenOutput>
+      <LastGenOutput>QL_NHATHUOC.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\QLNT.edmx.diagram">
-      <DependentUpon>QLNT.edmx</DependentUpon>
+    <Content Include="Models\DataAccess\QL_NHATHUOC.edmx.diagram">
+      <DependentUpon>QL_NHATHUOC.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -265,28 +260,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -308,15 +281,31 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Product\Create.cshtml" />
-    <Content Include="Views\Product\Delete.cshtml" />
-    <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\ProductManagement\Create.cshtml" />
+    <Content Include="Views\ProductManagement\Delete.cshtml" />
+    <Content Include="Views\ProductManagement\Details.cshtml" />
+    <Content Include="Views\ProductManagement\Edit.cshtml" />
+    <Content Include="Views\ProductManagement\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Prescription\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\OrderManagement\Index.cshtml" />
+    <Content Include="Views\OrderManagement\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -329,20 +318,39 @@
     <Folder Include="Areas\Admin\Views\ReviewManagement\" />
     <Folder Include="Areas\Admin\Views\UserManagement\" />
     <Folder Include="Areas\Admin\Views\VoucherManagement\" />
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Blog\" />
-    <Folder Include="Views\Cart\" />
-    <Folder Include="Views\Checkout\" />
-    <Folder Include="Views\Order\" />
-    <Folder Include="Views\Prescription\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <Folder Include="Models\Services\" />
+    <Folder Include="Models\ViewModels\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -372,16 +380,17 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
