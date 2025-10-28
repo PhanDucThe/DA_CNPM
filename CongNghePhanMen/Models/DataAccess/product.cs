@@ -11,7 +11,8 @@ namespace CongNghePhanMen.Models.DataAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,7 @@ namespace CongNghePhanMen.Models.DataAccess
             this.order_items = new HashSet<order_items>();
             this.product_images = new HashSet<product_images>();
         }
-    
+        [Key]
         public int id { get; set; }
         public string name { get; set; }
         public string sku { get; set; }

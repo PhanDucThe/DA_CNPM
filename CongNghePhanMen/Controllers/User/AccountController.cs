@@ -1,13 +1,13 @@
 ﻿using CongNghePhanMen.Helpers;
 using CongNghePhanMen.Models;
+using CongNghePhanMen.Models.DataAccess;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-
-using System.ComponentModel.DataAnnotations;
 
 namespace CongNghePhanMen.Models
 {
@@ -90,7 +90,7 @@ namespace CongNghePhanMen.Controllers
     public class AccountController : Controller
     {
         // GET: Account
-        private CSDLBanThuoc db = new CSDLBanThuoc();
+        private QL_THUOCEntities db = new QL_THUOCEntities();
 
         [HttpGet]
         public ActionResult Register()
