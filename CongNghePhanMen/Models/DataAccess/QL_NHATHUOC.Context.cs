@@ -12,6 +12,8 @@ namespace CongNghePhanMen.Models.DataAccess
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.ComponentModel.DataAnnotations;
+    
     
     public partial class QL_THUOCEntities : DbContext
     {
